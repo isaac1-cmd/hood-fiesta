@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hood Fiesta – One Neighbourhood. One Community. One Experience.</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+:root{--g:#008751;--gd:#04321f;--bg:#07140e;--card:#0f241a;--gold:#ffc21a;--or:#ff6a1a;--pk:#ff2e7e;--bl:#18b7e6;--tx:#f7f3e8;--mu:#b9c9bf;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:Poppins,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Lilita One',Impact,sans-serif;font-weight:400;letter-spacing:.5px}
+a{color:inherit}
+.bunting{height:14px;background:repeating-linear-gradient(90deg,var(--g) 0 40px,#fff 40px 80px,var(--g) 80px 120px,var(--gold) 120px 160px,var(--pk) 160px 200px,var(--or) 200px 240px)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(7,20,14,.92);backdrop-filter:blur(8px);display:flex;justify-content:space-between;align-items:center;padding:10px 5vw;gap:12px}
+nav b{font-family:'Lilita One';font-size:1.3rem;color:var(--gold)}
+nav div{display:flex;gap:16px;font-size:.85rem;overflow-x:auto}
+nav a{text-decoration:none;white-space:nowrap;color:var(--mu)}
+nav a:hover{color:var(--gold)}
+.hero{position:relative;text-align:center;padding:70px 5vw 60px;background:radial-gradient(circle at 20% 20%,rgba(255,46,126,.35),transparent 40%),radial-gradient(circle at 85% 30%,rgba(255,194,26,.3),transparent 40%),radial-gradient(circle at 50% 100%,rgba(0,135,81,.6),transparent 55%),var(--gd)}
+.hero:before{content:"";position:absolute;inset:0;opacity:.12;background:repeating-conic-gradient(from 0deg at 50% 50%,#fff 0 10deg,transparent 10deg 20deg)}
+.hero>*{position:relative}
+.welcome{display:inline-block;background:var(--gold);color:#2a1c00;font-weight:700;padding:6px 18px;border-radius:30px;font-size:.85rem;letter-spacing:2px;text-transform:uppercase}
+.hero h1{font-size:clamp(3.2rem,13vw,8rem);line-height:1;margin:16px 0 4px;background:linear-gradient(90deg,var(--gold),var(--or),var(--pk));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 0 rgba(0,0,0,.35))}
+.sub{font-size:clamp(1rem,3vw,1.5rem);font-weight:600}
+.slogan{font-family:'Lilita One';font-size:clamp(1.1rem,3.5vw,1.8rem);color:var(--gold);margin:12px 0 6px}
+.meta{color:var(--mu);margin-bottom:24px}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 1rem Poppins;padding:14px 28px;border-radius:50px;text-decoration:none;color:#2a1c00;background:linear-gradient(135deg,var(--gold),var(--or));box-shadow:0 6px 0 #9a3d00;transition:.15s}
+.btn:hover{transform:translateY(2px);box-shadow:0 4px 0 #9a3d00}
+.btn.alt{background:#fff;color:var(--gd);box-shadow:0 6px 0 #9bb;margin-left:8px}
+.btn.g{background:var(--g);color:#fff;box-shadow:0 6px 0 #00492b}
+.cd{display:flex;justify-content:center;gap:12px;margin:34px 0 8px;flex-wrap:wrap}
+.cd div{background:rgba(0,0,0,.45);border:2px solid var(--gold);border-radius:16px;min-width:78px;padding:12px 8px}
+.cd b{display:block;font-family:'Lilita One';font-size:2.4rem;line-height:1;color:var(--gold)}
+.cd span{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--mu)}
+.cdl{font-weight:600;letter-spacing:1px}
+section{padding:64px 5vw;max-width:1150px;margin:auto}
+h2{font-size:clamp(2rem,6vw,3rem);text-align:center;color:var(--gold)}
+.lead{text-align:center;color:var(--mu);max-width:640px;margin:8px auto 34px}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:var(--card);border-radius:20px;padding:24px;border-top:6px solid var(--c,var(--g));position:relative}
+.card h3{font-size:1.6rem;color:var(--c,var(--gold))}
+.card p,.card li{color:var(--mu);font-size:.92rem}
+.card ul{padding-left:18px;margin:8px 0}
+.ico{font-size:2.4rem}
+.fee{font-weight:700;color:var(--tx);margin:10px 0 2px}
+.prize{background:rgba(255,194,26,.12);border:1px dashed var(--gold);border-radius:12px;padding:10px 12px;margin:12px 0;font-size:.88rem}
+.prize b{color:var(--gold)}
+.spon{font-size:.8rem;margin:10px 0;color:var(--mu)}
+.spon b{color:var(--tx)}
+.card .btn{width:100%;text-align:center;margin-top:8px;padding:12px}
+.partners{background:linear-gradient(90deg,var(--g),#005c37);text-align:center;padding:22px 5vw}
+.partners p{font-size:.8rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.partners div{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.partners span{background:#fff;color:var(--gd);font-weight:700;border-radius:30px;padding:6px 18px}
+.tl{display:grid;gap:10px}
+.tl div{display:grid;grid-template-columns:110px 1fr auto;gap:12px;align-items:center;background:var(--card);padding:14px 18px;border-radius:14px;border-left:6px solid var(--c)}
+.tl b{font-family:'Lilita One';color:var(--c);font-size:1.15rem}
+.tl small{color:var(--mu)}
+.tl .big{background:linear-gradient(90deg,var(--pk),var(--or));border:0}
+.tl .big b,.tl .big small{color:#fff}
+.streets{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.streets span{background:var(--card);border:2px solid var(--c);border-radius:40px;padding:8px 20px;font-weight:600}
+.final{background:var(--card);border-radius:24px;padding:28px;display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.final h3{color:var(--pk);margin-bottom:8px}
+.final li{list-style:none;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:.92rem}
+.final li b{color:var(--gold);display:inline-block;min-width:78px}
+.contact{text-align:center;background:var(--gd)}
+.contact .btn{margin:6px}
+footer{text-align:center;padding:26px 5vw;color:var(--mu);font-size:.8rem}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:50;display:none;overflow-y:auto;padding:20px}
+.modal.on{display:block}
+.box{background:#fff;color:#1b1b1b;max-width:560px;margin:20px auto;border-radius:22px;overflow:hidden}
+.bh{padding:18px 22px;background:var(--c,var(--g));color:#fff;display:flex;justify-content:space-between;align-items:center}
+.bh h3{font-size:1.5rem}
+.x{background:none;border:0;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
+form,.done{padding:22px}
+label{display:block;font-weight:600;font-size:.85rem;margin:12px 0 4px}
+input,select{width:100%;padding:11px 12px;border:2px solid #d5ddd8;border-radius:10px;font:1rem Poppins;background:#fff;color:#1b1b1b}
+input:focus,select:focus{outline:0;border-color:var(--g)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sec{font-family:'Lilita One';color:var(--g);margin-top:18px;font-size:1.2rem}
+.pay{background:#fff7dc;border:2px dashed var(--gold);border-radius:12px;padding:14px;margin:18px 0 6px;font-weight:700;display:flex;justify-content:space-between}
+.note{font-size:.78rem;color:#667;margin:6px 0 12px}
+.box .btn{width:100%;margin:6px 0;text-align:center}
+.err{color:#c00;font-size:.85rem;margin-top:8px}
+@media(max-width:600px){.tl div{grid-template-columns:1fr}.two{grid-template-columns:1fr}.btn.alt{margin:12px 0 0}}
+</style>
+</head>
+<body>
+<div class="bunting"></div>
+<nav><b>HOOD FIESTA</b><div><a href="#about">About</a><a href="#compete">Compete</a><a href="#week">Schedule</a><a href="#streets">Streets</a><a href="#grand">Saturday Carnival</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero">
+  <span class="welcome">Welcome to</span>
+  <h1>HOOD FIESTA</h1>
+  <p class="sub">The Street Carnival • Sports • Music • Business Expo</p>
+  <p class="slogan">One Neighbourhood. One Community. One Experience.</p>
+  <p class="meta">A week of street-vs-street rivalry, then the Grand Carnival &amp; After-Party on Saturday • Aboki Junction</p>
+  <a class="btn" href="#compete">Register to Win Big Prizes 🏆</a><a class="btn alt" href="#grand">See the Carnival</a>
+  <div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Mins</span></div><div><b id="s">00</b><span>Secs</span></div></div>
+  <p class="cdl" id="cdl">COUNTDOWN TO FIESTA WEEK • MONDAY 14 DECEMBER 2026</p>
+</header>
+<div class="bunting"></div>
+
+<div class="partners"><p>Brought to you by</p><div><span>Zuvillah</span><span>Bris Vile Hotel &amp; Resort</span><span>Rival Zone</span><span>GameHub</span></div></div>
+
+<section id="about">
+  <h2>What Hood Fiesta Is All About</h2>
+  <p class="lead">A week-long street festival where eight neighbourhoods compete, connect and celebrate, ending with a massive Saturday carnival.</p>
+  <div class="card" style="--c:var(--gold);text-align:center;margin-bottom:18px"><h3>Our Vision</h3><p style="font-size:1.05rem;max-width:760px;margin:8px auto 0">To make Hood Fiesta an annual neighbourhood celebration that promotes <b style="color:var(--tx)">unity</b>, <b style="color:var(--tx)">healthy competition</b>, <b style="color:var(--tx)">youth talent</b>, <b style="color:var(--tx)">local business growth</b> and plenty of <b style="color:var(--tx)">fun</b>, so every resident looks forward to it each year.</p></div>
+  <div class="grid">
+    <div class="card" style="--c:var(--g)"><div class="ico">🔥</div><h3>The Rivalry</h3><p>Streets go head to head in football, swimming, snooker and table tennis, playing for prizes, trophies and bragging rights.</p></div>
+    <div class="card" style="--c:var(--bl)"><div class="ico">🤝</div><h3>The Community</h3><p>Residents, families, businesses and neighbours meet, cheer together and build stronger bonds across every street.</p></div>
+    <div class="card" style="--c:var(--pk)"><div class="ico">🎉</div><h3>The Celebration</h3><p>The Saturday carnival brings the parade, live DJs, dance, vendors, awards and an after-party that runs till dawn.</p></div>
+    <div class="card" style="--c:var(--or)"><div class="ico">🛍️</div><h3>Business Boost</h3><p>Local vendors and brands get a big crowd to sell to, showcase their products and meet new customers.</p></div>
+  </div>
+</section>
+
+<section id="compete">
+  <h2>Competition Registration</h2>
+  <p class="lead">Four competitions. Eight streets. Pick your game, register your street and play for glory and cash prizes.</p>
+  <div class="grid" id="cards"></div>
+</section>
+
+<section id="week">
+  <h2>The Fiesta Week</h2>
+  <p class="lead">Every sport gets its own day. Saturday is for everybody.</p>
+  <div class="tl" id="tl"></div>
+  <p class="lead" style="margin-top:14px;font-size:.8rem">Final timetable depends on the number of registered contestants.</p>
+</section>
+
+<section id="streets">
+  <h2>The 8 Streets</h2>
+  <p class="lead">Whose street runs the hood? Rally your people and represent.</p>
+  <div class="streets" id="st"></div>
+</section>
+
+<section id="grand">
+  <h2>Grand Carnival – Saturday</h2>
+  <p class="lead">The Entire Hood Comes Together • Venue: Aboki Junction</p>
+  <div class="final">
+    <div><h3>Programme</h3><ul style="padding:0">
+      <li><b>12:00 PM</b> Grounds open &amp; guest arrival</li><li><b>1:00 PM</b> Official opening &amp; welcome</li><li><b>2:00 PM</b> Street parade &amp; carnival</li><li><b>3:00 PM</b> Community games</li><li><b>4:00 PM</b> Business exhibition &amp; vendors</li><li><b>5:00 PM</b> Awards &amp; trophies</li><li><b>6:00 PM</b> Live DJs &amp; entertainment</li><li><b>8:00 PM</b> Special guest performances</li><li><b>1:00 AM</b> Official After-Party at BOOMBOX Club</li>
+    </ul></div>
+    <div><h3>Highlights</h3><ul style="padding:0">
+      <li>🥁 Street parade &amp; community celebration</li><li>🏆 Trophy &amp; cash prize presentations</li><li>🛍️ Business &amp; vendor exhibition</li><li>🎧 Live DJs, hype hosts &amp; dance</li><li>🎁 Games &amp; giveaways</li><li>🌙 After-party till dawn</li></ul>
+      <p style="color:var(--mu);font-size:.85rem;margin-top:14px">Want a stall? Food, fashion, beauty, games and local brands are welcome — contact us below.</p></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2>Get In Touch</h2>
+  <p class="lead">Questions, vendor stalls, sponsorship or payment help? Talk to us.</p>
+  <a class="btn g" href="https://wa.me/2349020757238" target="_blank" rel="noopener">💬 WhatsApp 09020757238</a>
+  <a class="btn" href="tel:09020757238">📞 Call Now</a>
+  <a class="btn alt" href="mailto:blakmixedentertainment@gmail.com">✉️ blakmixedentertainment@gmail.com</a>
+</section>
+<div class="bunting"></div>
+<footer>© 2026 Hood Fiesta • Organised by Blak Mixed Entertainment</footer>
+
+<div class="modal" id="modal"><div class="box"><div class="bh" id="bh"><h3 id="bt"></h3><button class="x" onclick="closeM()" aria-label="Close">×</button></div><div id="bd"></div></div></div>
+
+<script>
+// ===== EDIT HERE =====
+const PHONE='2349020757238', EMAIL='blakmixedentertainment@gmail.com';
+const START=new Date('2026-12-14T00:00:00+01:00'); // Monday, 2nd Monday of December
+const COMP={
+ football:{name:'Football Street Competition',ico:'⚽',c:'#00a862',fee:20000,sp:'Rival Zone',venue:'Rival Zone',when:'Sun–Tue • Knockout',prize:'1st ₦200,000 • 2nd ₦100,000',desc:'8 streets. 1 trophy. Register your street team of 10 players.',type:'team'},
+ swimming:{name:'Swimming Competition',ico:'🏊',c:'#18b7e6',fee:5000,sp:'Bris Vile',venue:'Bris Vile Swimming Pool',when:'Wednesday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'Making waves. Race for your street in individual finals.',type:'solo'},
+ snooker:{name:'Snooker Competition',ico:'🎱',c:'#ff2e7e',fee:5000,sp:'GameHub',venue:'GameHub',when:'Thursday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'The hood\'s cue masters. Knockout to the final.',type:'solo'},
+ tt:{name:'Table Tennis Competition',ico:'🏓',c:'#ff6a1a',fee:5000,sp:'GameHub',venue:'GameHub',when:'Friday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'Fast hands, big energy. Singles and doubles.',type:'tt'}
+};
+const STREETS=['Camp David','Bris Vile','Maryland','Nellyview','House of Assembly','Cheko','Mofa','Pritazzo Extension'];
+const DAYS=[['Sunday','Football Quarter-Finals','Rival Zone','#00a862'],['Monday','Football Semi-Finals','Rival Zone','#00a862'],['Tuesday','Football 3rd-Place &amp; Final','Rival Zone','#00a862'],['Wednesday','Swimming Competition','Bris Vile Pool','#18b7e6'],['Thursday','Snooker Tournament','GameHub','#ff2e7e'],['Friday','Table Tennis Tournament','GameHub','#ff6a1a'],['Saturday','🎉 GRAND CARNIVAL &amp; AFTER-PARTY','Aboki Junction','#ffc21a']];
+// ======================
+const $=id=>document.getElementById(id),N=n=>'₦'+n.toLocaleString('en-NG');
+$('cards').innerHTML=Object.entries(COMP).map(([k,o])=>`<div class="card" style="--c:${o.c}"><div class="ico">${o.ico}</div><h3>${o.name}</h3><p>${o.desc}</p><div class="prize">🏆 <b>Win:</b> ${o.prize}</div><p>📍 ${o.venue} • 📅 ${o.when}</p><div class="spon">Sponsored by <b>${o.sp}</b></div><div class="fee">Registration: ${N(o.fee)}</div><button class="btn" onclick="openM('${k}')">Register Now</button></div>`).join('');
+$('tl').innerHTML=DAYS.map((d,i)=>`<div style="--c:${d[3]}" class="${i==6?'big':''}"><b>${d[0]}</b><span>${d[1]}</span><small>${d[2]}</small></div>`).join('');
+$('st').innerHTML=STREETS.map((s,i)=>`<span style="--c:${['#ffc21a','#ff2e7e','#18b7e6','#ff6a1a','#00a862','#ffc21a','#ff2e7e','#18b7e6'][i]}">${s}</span>`).join('');
+
+function tick(){let t=START-new Date();if(t<0){t=0;$('cdl').textContent='🎉 FIESTA WEEK IS LIVE! SEE YOU AT THE CARNIVAL SATURDAY';}
+ const f=(x)=>String(Math.floor(x)).padStart(2,'0');$('d').textContent=f(t/864e5);$('h').textContent=f(t/36e5%24);$('m').textContent=f(t/6e4%60);$('s').textContent=f(t/1e3%60)}
+tick();setInterval(tick,1000);
+
+const opts=()=>'<option value="">Select street…</option>'+STREETS.map(s=>`<option>${s}</option>`).join('');
+const inp=(id,l,t='text',r=true)=>`<label>${l}</label><input id="${id}" type="${t}" ${r?'required':''}>`;
+let cur;
+function openM(k){cur=k;const o=COMP[k];$('bh').style.setProperty('--c',o.c);$('bt').textContent=o.ico+' '+o.name;let f='';
+ if(o.type=='team'){f=`<label>Street Name</label><select id="street" required>${opts()}</select>`+inp('team','Team Name (optional)','text',false)+'<div class="sec">The 10 Players</div>'+Array.from({length:10},(_,i)=>inp('p'+i,'Player '+(i+1)+' – full name')).join('')+'<div class="sec">Coach</div>'+inp('coach','Coach name (if you have one)','text',false)+'<div class="sec">Team Contact</div>'+inp('cname','Contact person name')+inp('cphone','Phone / WhatsApp number','tel')+inp('email','Email address (your confirmation is sent here)','email');}
+ else{f=`<label>Which street are you representing?</label><select id="street" required>${opts()}</select>`+inp('fname','Full name')+inp('cphone','Phone / WhatsApp number','tel')+inp('email','Email address (your confirmation is sent here)','email');
+  if(o.type=='tt')f+=`<label>Category</label><select id="cat" onchange="$('pw').style.display=this.value=='Doubles'?'block':'none'"><option>Singles</option><option>Doubles</option></select><div id="pw" style="display:none">${inp('partner','Doubles partner full name','text',false)}</div>`;
+  if(k=='swimming')f+=inp('age','Age','number');}
+ $('bd').innerHTML=`<form onsubmit="return sub(event)">${f}<div class="pay"><span>Registration fee</span><span>${N(o.fee)}</span></div><p class="note">You will be taken to Paystack to pay securely. Once payment is confirmed, a confirmation email with your reference number is sent to you.</p><div class="err" id="err"></div><button class="btn g" type="submit">Continue to Payment →</button></form>`;
+ $('modal').classList.add('on');$('modal').scrollTop=0}
+function closeM(){$('modal').classList.remove('on')}
+async function sub(e){e.preventDefault();const o=COMP[cur],v=id=>($(id)?$(id).value.trim():''),b=e.target.querySelector('button[type=submit]'),er=$('err');er.textContent='';
+ const d={competition:cur,street:v('street'),email:v('email'),phone:v('cphone')};
+ if(o.type=='team'){d.team=v('team');d.players=Array.from({length:10},(_,i)=>v('p'+i));d.coach=v('coach');d.contact=v('cname');}
+ else{d.name=v('fname');d.age=v('age');if(cur=='tt'){d.category=v('cat');d.partner=v('partner');}}
+ b.disabled=true;b.textContent='Please wait…';
+ try{const r=await fetch('/api/initialize',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});const j=await r.json();if(!r.ok||!j.url)throw new Error(j.error||'Could not start payment');location.href=j.url}
+ catch(x){er.textContent=x.message;b.disabled=false;b.textContent='Continue to Payment →'}return false}
+</script>
+</body>
+</html>
