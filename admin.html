@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin – Hood Fiesta</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;600;700&display=swap">
+<style>
+:root{color-scheme:dark;--g:#00a862;--gold:#ffc21a;--bg:#04321f;--card:#0f241a;--line:#1f3a2c;--mu:#b9c9bf}
+*{box-sizing:border-box;margin:0}
+body{min-height:100vh;font-family:Poppins,system-ui,sans-serif;color:#f7f3e8;background:radial-gradient(circle at 15% 10%,rgba(255,46,126,.25),transparent 40%),radial-gradient(circle at 90% 20%,rgba(255,194,26,.2),transparent 40%),var(--bg);padding:24px}
+h1{font-family:'Lilita One';font-weight:400;color:var(--gold);font-size:clamp(1.8rem,4vw,2.6rem)}
+.wrap{max-width:1250px;margin:auto}
+.login{max-width:400px;margin:12vh auto;background:var(--card);border-top:8px solid var(--gold);border-radius:22px;padding:30px;text-align:center}
+.login p{color:var(--mu);margin:8px 0 18px;font-size:.9rem}
+input,select{width:100%;background:#07170f;color:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;font:inherit;outline:none}
+input:focus,select:focus{border-color:var(--gold)}
+.btn{display:inline-block;border:0;cursor:pointer;font:inherit;font-weight:700;color:#2a1c00;background:linear-gradient(135deg,#ffc21a,#ff6a1a);padding:12px 24px;border-radius:40px}
+.btn.ghost{background:transparent;color:#f7f3e8;border:1px solid var(--line)}
+.btn[disabled]{opacity:.6;cursor:wait}
+.msg{min-height:1.3em;margin-top:12px;font-size:.85rem;color:var(--mu)}.msg.err{color:#ff8a8a}
+.top{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+.top .act{display:flex;gap:10px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.stat{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c,var(--gold));border-radius:14px;padding:14px 16px}
+.stat span{display:block;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--mu);font-weight:700}
+.stat b{font-family:'Lilita One';font-weight:400;font-size:1.9rem;color:#fff}
+.stat small{display:block;color:var(--mu);font-size:.75rem}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:14px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{text-align:left;padding:13px 14px;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--mu);border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid #162d22;vertical-align:top}
+tr.row{cursor:pointer}tr.row:hover td{background:#12301f}
+.ref{color:var(--gold);font-weight:700;white-space:nowrap}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;color:#04210f;background:var(--c)}
+.dup{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:12px;background:#ff2e7e;font-size:.65rem;font-weight:700}
+.det td{background:#0a1d14;padding:16px 20px}
+.det dl{display:grid;grid-template-columns:150px 1fr;gap:6px 14px;font-size:.85rem}
+.det dt{color:var(--mu)}.det dd{font-weight:600;white-space:pre-line}
+a{color:var(--gold)}
+@media(max-width:700px){body{padding:14px}.filters{grid-template-columns:1fr}}
+</style></head><body>
+<div class="wrap">
+
+<div class="login" id="login">
+  <h1>HOOD FIESTA</h1>
+  <p>Organiser dashboard</p>
+  <form id="lf"><input type="password" id="pw" placeholder="Admin password" autocomplete="current-password" required>
+  <div style="height:12px"></div><button class="btn" type="submit" style="width:100%">Enter Dashboard</button><div class="msg" id="lmsg" role="status"></div></form>
+</div>
+
+<div id="dash" hidden>
+  <div class="top">
+    <div><h1>Registrations</h1><p style="color:var(--mu);font-size:.85rem">Every paid registration. Click a row for full details.</p></div>
+    <div class="act"><button class="btn ghost" id="refresh">Refresh</button><button class="btn" id="csv">Download CSV</button><button class="btn ghost" id="logout">Log out</button></div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="filters">
+    <input id="q" placeholder="Search name, team, phone, email or reference…">
+    <select id="fc"></select><select id="fs"></select>
+  </div>
+  <div class="msg" id="dmsg" role="status"></div>
+  <div class="tw"><table><thead><tr><th>Paid</th><th>Reference</th><th>Competition</th><th>Street</th><th>Name / Team</th><th>Phone</th><th>Email</th><th>Amount</th></tr></thead><tbody id="rows"></tbody></table></div>
+</div>
+
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const N=n=>'₦'+Number(n).toLocaleString('en-NG');
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const COLORS={football:'#00a862',swimming:'#18b7e6',snooker:'#ff2e7e',tt:'#ff6a1a'};
+let all=[],open=new Set();
+
+const who=r=>r.name||r.team||r.contact||'';
+const wa=p=>{let d=String(p).replace(/\D/g,'');if(d.startsWith('0'))d='234'+d.slice(1);return 'https://wa.me/'+d};
+
+async function load(pw){
+  $('dmsg').textContent='Loading registrations…';
+  const r=await fetch('/api/admin',{headers:{'x-admin-password':pw}});
+  const d=await r.json();
+  if(!r.ok)throw new Error(d.error||'Could not load.');
+  all=d.registrations;sessionStorage.setItem('hf_admin',pw);
+  $('login').hidden=true;$('dash').hidden=false;
+  const opt=(key,label)=>`<option value="">${label}</option>`+[...new Set(all.map(x=>x[key]))].filter(Boolean).sort().map(v=>`<option>${esc(v)}</option>`).join('');
+  const keepC=$('fc').value,keepS=$('fs').value;
+  $('fc').innerHTML=opt('competition','All competitions');$('fs').innerHTML=opt('street','All streets');
+  $('fc').value=keepC;$('fs').value=keepS;
+  draw();
+}
+
+function filtered(){
+  const q=$('q').value.trim().toLowerCase(),c=$('fc').value,s=$('fs').value;
+  return all.filter(r=>(!c||r.competition===c)&&(!s||r.street===s)&&(!q||[who(r),r.team,r.contact,r.phone,r.email,r.reference,r.street].some(v=>String(v).toLowerCase().includes(q))));
+}
+
+function draw(){
+  const list=filtered();
+  const rev=list.reduce((a,r)=>a+r.amount,0);
+  const by={};list.forEach(r=>by[r.code]=(by[r.code]||0)+1);
+  const names={football:'Football',swimming:'Swimming',snooker:'Snooker',tt:'Table Tennis'};
+  const fbStreets=new Set(list.filter(r=>r.code==='football').map(r=>r.street)).size;
+  $('stats').innerHTML=
+    `<div class="stat"><span>Registrations</span><b>${list.length}</b></div><div class="stat"><span>Revenue</span><b>${N(rev)}</b></div>`+
+    Object.keys(names).map(k=>`<div class="stat" style="--c:${COLORS[k]}"><span>${names[k]}</span><b>${by[k]||0}</b>${k==='football'?`<small>${fbStreets} of 8 streets</small>`:''}</div>`).join('');
+
+  // football: one team per street, so flag repeats
+  const fbCount={};all.filter(r=>r.code==='football').forEach(r=>fbCount[r.street]=(fbCount[r.street]||0)+1);
+
+  $('rows').innerHTML=list.map(r=>{
+    const isOpen=open.has(r.reference);
+    const dup=r.code==='football'&&fbCount[r.street]>1?'<span class="dup">2+ teams</span>':'';
+    const main=`<tr class="row" data-ref="${esc(r.reference)}"><td>${new Date(r.date).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'})}</td><td class="ref">${esc(r.reference)}</td><td><span class="tag" style="--c:${COLORS[r.code]}">${esc(r.competition.replace(' Competition','').replace(' Street',''))}</span></td><td>${esc(r.street)}${dup}</td><td><b>${esc(who(r))}</b></td><td><a href="${wa(r.phone)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(r.phone)}</a></td><td>${esc(r.email)}</td><td>${N(r.amount)}</td></tr>`;
+    if(!isOpen)return main;
+    const rows=[['Competition',r.competition],['Street',r.street],r.team&&['Team name',r.team],r.name&&['Name',r.name],r.contact&&['Contact person',r.contact],r.age&&['Age',r.age],r.category&&['Category',r.category],r.partner&&['Doubles partner',r.partner],r.players.length&&['Players',r.players.map((p,i)=>`${i+1}. ${p}`).join('\n')],r.coach&&['Coach',r.coach],['Phone',r.phone],['Email',r.email],['Amount paid',N(r.amount)],['Reference',r.reference]].filter(Boolean);
+    return main+`<tr class="det"><td colspan="8"><dl>${rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></td></tr>`;
+  }).join('');
+  $('dmsg').textContent=list.length?'':'No registrations found.';
+}
+
+$('rows').addEventListener('click',e=>{
+  const tr=e.target.closest('tr.row');if(!tr)return;
+  const ref=tr.dataset.ref;open.has(ref)?open.delete(ref):open.add(ref);draw();
+});
+['q','fc','fs'].forEach(id=>$(id).addEventListener('input',draw));
+$('refresh').addEventListener('click',()=>load(sessionStorage.getItem('hf_admin')).catch(e=>$('dmsg').textContent=e.message));
+$('logout').addEventListener('click',()=>{sessionStorage.removeItem('hf_admin');location.reload()});
+
+$('lf').addEventListener('submit',async e=>{
+  e.preventDefault();const m=$('lmsg');m.className='msg';m.textContent='Checking…';
+  try{await load($('pw').value);}catch(err){m.className='msg err';m.textContent=err.message}
+});
+
+$('csv').addEventListener('click',()=>{
+  const cell=v=>`"${String(v==null?'':v).replace(/"/g,'""')}"`;
+  const head=['Paid','Reference','Competition','Street','Name','Team','Contact person','Phone','Email','Amount','Age','Category','Doubles partner','Coach','Players'];
+  const lines=[head.map(cell).join(',')].concat(filtered().map(r=>[r.date,r.reference,r.competition,r.street,r.name,r.team,r.contact,r.phone,r.email,r.amount,r.age,r.category,r.partner,r.coach,r.players.join('; ')].map(cell).join(',')));
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob(['\uFEFF'+lines.join('\n')],{type:'text/csv;charset=utf-8'}));
+  a.download='hood-fiesta-registrations.csv';a.click();
+});
+
+const saved=sessionStorage.getItem('hf_admin');
+if(saved)load(saved).catch(()=>sessionStorage.removeItem('hf_admin'));
+</script></body></html>
