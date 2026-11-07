@@ -20,6 +20,8 @@ module.exports = async (req, res) => {
           custom_fields: [
             { display_name: 'Competition', variable_name: 'competition', value: comp.name },
             { display_name: 'Street', variable_name: 'street', value: reg.street },
+            { display_name: 'Name / Team', variable_name: 'who', value: reg.name || reg.team || reg.contact },
+            { display_name: 'Phone', variable_name: 'phone', value: reg.phone },
           ],
         },
       }),

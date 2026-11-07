@@ -33,7 +33,10 @@ function cleanRegistration(b) {
     if (b.competition === 'swimming') r.age = str(b.age, 3);
     if (b.competition === 'tt') {
       r.category = b.category === 'Doubles' ? 'Doubles' : 'Singles';
-      if (r.category === 'Doubles') r.partner = str(b.partner);
+      if (r.category === 'Doubles') {
+        r.partner = str(b.partner);
+        if (!r.partner) throw new Error("Please enter your doubles partner's full name");
+      }
     }
   }
   return r;
