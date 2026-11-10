@@ -3,10 +3,10 @@ const nodemailer = require('nodemailer');
 
 // ---- Competitions & fees (server is the source of truth for amounts) ----
 const COMPETITIONS = {
-  football: { name: 'Football Street Competition', code: 'FB', fee: 20000, venue: 'Rival Zone', when: 'Sunday – Tuesday' },
+  football: { name: 'Football Street Competition', code: 'FB', fee: 20000, venue: 'Zuvillah', when: 'Monday – Tuesday (semi-finals & final on Friday)' },
   swimming: { name: 'Swimming Competition', code: 'SW', fee: 5000, venue: 'Bris Vile Swimming Pool', when: 'Wednesday' },
-  snooker: { name: 'Snooker Competition', code: 'SN', fee: 5000, venue: 'GameHub', when: 'Thursday' },
-  tt: { name: 'Table Tennis Competition', code: 'TT', fee: 5000, venue: 'GameHub', when: 'Friday' },
+  snooker: { name: 'Snooker Competition', code: 'SN', fee: 5000, venue: 'First Class', when: 'Thursday' },
+  tt: { name: 'Table Tennis Competition', code: 'TT', fee: 5000, venue: 'First Class', when: 'Thursday' },
 };
 const STREETS = ['Camp David', 'Bris Vile', 'Maryland', 'Nellyview', 'House of Assembly', 'Cheko', 'Mofa', 'Pritazzo Extension'];
 
