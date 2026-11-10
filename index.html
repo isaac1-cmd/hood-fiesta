@@ -194,7 +194,7 @@ $('cards').innerHTML=Object.entries(COMP).map(([k,o])=>`<div class="card" style=
 $('tl').innerHTML=DAYS.map((d,i)=>`<div style="--c:${d[3]}" class="${i==DAYS.length-1?'big':''}"><b>${d[0]}</b><span>${d[1]}</span><small>${d[2]}</small></div>`).join('');
 $('st').innerHTML=STREETS.map((s,i)=>`<span style="--c:${['#ffc21a','#ff2e7e','#18b7e6','#ff6a1a','#00a862','#ffc21a','#ff2e7e','#18b7e6'][i]}">${s}</span>`).join('');
 
-function tick(){let t=START-new Date();if(t<0){t=0;$('cdl').textContent='🎉 FIESTA WEEK IS LIVE! SEE YOU AT THE CARNIVAL SATURDAY';}
+function tick(){let t=START-new Date();if(t<0){t=0;$('cdl').textContent=' FIESTA WEEK IS LIVE! SEE YOU AT THE CARNIVAL SATURDAY';}
  const f=(x)=>String(Math.floor(x)).padStart(2,'0');$('d').textContent=f(t/864e5);$('h').textContent=f(t/36e5%24);$('m').textContent=f(t/6e4%60);$('s').textContent=f(t/1e3%60)}
 tick();setInterval(tick,1000);
 
