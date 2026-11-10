@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="hood-fiesta-icon.png">
 <title>Hood Fiesta – One Neighbourhood. One Community. One Experience.</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;500;600;700&display=swap">
 <style>
@@ -86,15 +87,28 @@ input:focus,select:focus{outline:0;border-color:var(--g)}
 .box .btn{width:100%;margin:6px 0;text-align:center}
 .err{color:#c00;font-size:.85rem;margin-top:8px}
 @media(max-width:600px){.tl div{grid-template-columns:1fr}.two{grid-template-columns:1fr}.btn.alt{margin:12px 0 0}}
+
+/* ---- logos & partners ---- */
+.navlogo{display:block;line-height:0}.navlogo img{height:46px;width:auto;display:block}
+.hero h1.logo{font-size:0;background:none;margin:18px auto 6px;filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
+.hero h1.logo img{width:clamp(250px,46vw,480px);height:auto;display:block;margin:auto}
+.partners .plogos{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:22px 34px;margin-top:6px}
+.pl{margin:0;height:104px;min-width:104px;display:grid;place-items:center}
+.pl img{height:104px;width:auto;max-width:210px;object-fit:contain;display:block;filter:drop-shadow(0 4px 10px rgba(0,0,0,.3))}
+.partners .pname{display:grid;place-items:center;min-height:104px;min-width:170px;padding:0 22px;border:2px dashed rgba(255,255,255,.55);border-radius:18px;font-family:'Lilita One';font-size:1.25rem;letter-spacing:1px;color:#fff;background:rgba(255,255,255,.08)}
+footer .packaged{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:16px}
+footer .packaged span{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--mu)}
+footer .packaged img{width:170px;height:auto;border-radius:14px;border:1px solid rgba(255,194,26,.45);display:block}
+@media(max-width:600px){.navlogo img{height:40px}.pl,.pl img{height:84px}.partners .pname{min-height:84px;min-width:130px;font-size:1.05rem}}
 </style>
 </head>
-<body>
+<body id="top">
 <div class="bunting"></div>
-<nav><b>HOOD FIESTA</b><div><a href="#about">About</a><a href="#compete">Compete</a><a href="#week">Schedule</a><a href="#streets">Streets</a><a href="#grand">Saturday Carnival</a><a href="#contact">Contact</a></div></nav>
+<nav><a class="navlogo" href="#top" aria-label="Hood Fiesta home"><img src="hood-fiesta-logo.webp" alt="Hood Fiesta"></a><div><a href="#about">About</a><a href="#compete">Compete</a><a href="#week">Schedule</a><a href="#streets">Streets</a><a href="#grand">Saturday Carnival</a><a href="#contact">Contact</a></div></nav>
 
 <header class="hero">
   <span class="welcome">Welcome to</span>
-  <h1>HOOD FIESTA</h1>
+  <h1 class="logo"><img src="hood-fiesta-logo.webp" alt="Hood Fiesta" fetchpriority="high"></h1>
   <p class="sub">The Street Carnival • Sports • Music • Business Expo</p>
   <p class="slogan">One Neighbourhood. One Community. One Experience.</p>
   <p class="meta">A week of street-vs-street rivalry, then the Grand Carnival &amp; After-Party on Saturday • Aboki Junction</p>
@@ -104,17 +118,17 @@ input:focus,select:focus{outline:0;border-color:var(--g)}
 </header>
 <div class="bunting"></div>
 
-<div class="partners"><p>Brought to you by</p><div><span>Zuvillah</span><span>Bris Vile Hotel &amp; Resort</span><span>Rival Zone</span><span>GameHub</span></div></div>
+<div class="partners"><p>Brought to you by</p><div class="plogos"><figure class="pl"><img src="partner-zuvillah.png" alt="Zuvillah" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure><figure class="pl"><img src="partner-bris-vile.png" alt="Bris Vile Hotel &amp; Resort" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure><figure class="pl"><img src="partner-first-class.png" alt="First Class" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure></div></div>
 
 <section id="about">
   <h2>What Hood Fiesta Is All About</h2>
   <p class="lead">A week-long street festival where eight neighbourhoods compete, connect and celebrate, ending with a massive Saturday carnival.</p>
   <div class="card" style="--c:var(--gold);text-align:center;margin-bottom:18px"><h3>Our Vision</h3><p style="font-size:1.05rem;max-width:760px;margin:8px auto 0">To make Hood Fiesta an annual neighbourhood celebration that promotes <b style="color:var(--tx)">unity</b>, <b style="color:var(--tx)">healthy competition</b>, <b style="color:var(--tx)">youth talent</b>, <b style="color:var(--tx)">local business growth</b> and plenty of <b style="color:var(--tx)">fun</b>, so every resident looks forward to it each year.</p></div>
   <div class="grid">
-    <div class="card" style="--c:var(--g)"><div class="ico"></div><h3>The Rivalry</h3><p>Streets go head to head in football, swimming, snooker and table tennis, playing for prizes, trophies and bragging rights.</p></div>
-    <div class="card" style="--c:var(--bl)"><div class="ico"></div><h3>The Community</h3><p>Residents, families, businesses and neighbours meet, cheer together and build stronger bonds across every street.</p></div>
-    <div class="card" style="--c:var(--pk)"><div class="ico"></div><h3>The Celebration</h3><p>The Saturday carnival brings the parade, live DJs, dance, vendors, awards and an after-party that runs till dawn.</p></div>
-    <div class="card" style="--c:var(--or)"><div class="ico"></div><h3>Business Boost</h3><p>Local vendors and brands get a big crowd to sell to, showcase their products and meet new customers.</p></div>
+    <div class="card" style="--c:var(--g)"><div class="ico">🔥</div><h3>The Rivalry</h3><p>Streets go head to head in football, swimming, snooker and table tennis, playing for prizes, trophies and bragging rights.</p></div>
+    <div class="card" style="--c:var(--bl)"><div class="ico">🤝</div><h3>The Community</h3><p>Residents, families, businesses and neighbours meet, cheer together and build stronger bonds across every street.</p></div>
+    <div class="card" style="--c:var(--pk)"><div class="ico">🎉</div><h3>The Celebration</h3><p>The Saturday carnival brings the parade, live DJs, dance, vendors, awards and an after-party that runs till dawn.</p></div>
+    <div class="card" style="--c:var(--or)"><div class="ico">🛍️</div><h3>Business Boost</h3><p>Local vendors and brands get a big crowd to sell to, showcase their products and meet new customers.</p></div>
   </div>
 </section>
 
@@ -145,7 +159,7 @@ input:focus,select:focus{outline:0;border-color:var(--g)}
       <li><b>12:00 PM</b> Grounds open &amp; guest arrival</li><li><b>1:00 PM</b> Official opening &amp; welcome</li><li><b>2:00 PM</b> Street parade &amp; carnival</li><li><b>3:00 PM</b> Community games</li><li><b>4:00 PM</b> Business exhibition &amp; vendors</li><li><b>5:00 PM</b> Awards &amp; trophies</li><li><b>6:00 PM</b> Live DJs &amp; entertainment</li><li><b>8:00 PM</b> Special guest performances</li><li><b>1:00 AM</b> Official After-Party at BOOMBOX Club</li>
     </ul></div>
     <div><h3>Highlights</h3><ul style="padding:0">
-      <li> Street parade &amp; community celebration</li><li> Trophy &amp; cash prize presentations</li><li> Business &amp; vendor exhibition</li><li> Live DJs, hype hosts &amp; dance</li><li> Games &amp; giveaways</li><li> After-party till dawn</li></ul>
+      <li>🥁 Street parade &amp; community celebration</li><li>🏆 Trophy &amp; cash prize presentations</li><li>🛍️ Business &amp; vendor exhibition</li><li>🎧 Live DJs, hype hosts &amp; dance</li><li>🎁 Games &amp; giveaways</li><li>🌙 After-party till dawn</li></ul>
       <p style="color:var(--mu);font-size:.85rem;margin-top:14px">Want a stall? Food, fashion, beauty, games and local brands are welcome — contact us below.</p></div>
   </div>
 </section>
@@ -158,7 +172,7 @@ input:focus,select:focus{outline:0;border-color:var(--g)}
   <a class="btn alt" href="mailto:blakmixedentertainment@gmail.com">✉️ blakmixedentertainment@gmail.com</a>
 </section>
 <div class="bunting"></div>
-<footer>© 2026 Hood Fiesta • Organised by Blak Mixed Entertainment</footer>
+<footer><div class="packaged"><span>Packaged &amp; presented by</span><img src="blakmixed-logo.webp" alt="Blak Mixed Entertainment"></div><p>© 2026 Hood Fiesta • Organised by Blak Mixed Entertainment</p></footer>
 
 <div class="modal" id="modal"><div class="box"><div class="bh" id="bh"><h3 id="bt"></h3><button class="x" onclick="closeM()" aria-label="Close">×</button></div><div id="bd"></div></div></div>
 
@@ -167,17 +181,17 @@ input:focus,select:focus{outline:0;border-color:var(--g)}
 const PHONE='2349020757238', EMAIL='blakmixedentertainment@gmail.com';
 const START=new Date('2026-12-14T00:00:00+01:00'); // Monday, 2nd Monday of December
 const COMP={
- football:{name:'Football Street Competition',ico:'⚽',c:'#00a862',fee:20000,sp:'Rival Zone',venue:'Rival Zone',when:'Sun–Tue • Knockout',prize:'1st ₦200,000 • 2nd ₦100,000',desc:'8 streets. 1 trophy. Register your street team of 10 players.',type:'team'},
+ football:{name:'Football Street Competition',ico:'⚽',c:'#00a862',fee:20000,sp:'Zuvillah',venue:'Zuvillah',when:'Mon &amp; Tue • Semi-finals &amp; final Fri',prize:'1st ₦200,000 • 2nd ₦100,000',desc:'8 streets. 1 trophy. Register your street team of 10 players.',type:'team'},
  swimming:{name:'Swimming Competition',ico:'🏊',c:'#18b7e6',fee:5000,sp:'Bris Vile',venue:'Bris Vile Swimming Pool',when:'Wednesday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'Making waves. Race for your street in individual finals.',type:'solo'},
- snooker:{name:'Snooker Competition',ico:'🎱',c:'#ff2e7e',fee:5000,sp:'GameHub',venue:'GameHub',when:'Thursday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'The hood\'s cue masters. Knockout to the final.',type:'solo'},
- tt:{name:'Table Tennis Competition',ico:'🏓',c:'#ff6a1a',fee:5000,sp:'GameHub',venue:'GameHub',when:'Friday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'Fast hands, big energy. Singles and doubles.',type:'tt'}
+ snooker:{name:'Snooker Competition',ico:'🎱',c:'#ff2e7e',fee:5000,sp:'First Class',venue:'First Class',when:'Thursday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'The hood\'s cue masters. Knockout to the final.',type:'solo'},
+ tt:{name:'Table Tennis Competition',ico:'🏓',c:'#ff6a1a',fee:5000,sp:'First Class',venue:'First Class',when:'Thursday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'Fast hands, big energy. Singles and doubles.',type:'tt'}
 };
 const STREETS=['Camp David','Bris Vile','Maryland','Nellyview','House of Assembly','Cheko','Mofa','Pritazzo Extension'];
-const DAYS=[['Sunday','Football Quarter-Finals','Rival Zone','#00a862'],['Monday','Football Semi-Finals','Rival Zone','#00a862'],['Tuesday','Football 3rd-Place &amp; Final','Rival Zone','#00a862'],['Wednesday','Swimming Competition','Bris Vile Pool','#18b7e6'],['Thursday','Snooker Tournament','GameHub','#ff2e7e'],['Friday','Table Tennis Tournament','GameHub','#ff6a1a'],['Saturday','🎉 GRAND CARNIVAL &amp; AFTER-PARTY','Aboki Junction','#ffc21a']];
+const DAYS=[['Monday','Football Kick-Off','Zuvillah','#00a862'],['Tuesday','Football Competition Continues','Zuvillah','#00a862'],['Wednesday','Swimming Competition','Bris Vile Pool','#18b7e6'],['Thursday','Snooker &amp; Table Tennis','First Class','#ff2e7e'],['Friday','Football Semi-Finals &amp; Final','Zuvillah','#00a862'],['Saturday','🎉 GRAND CARNIVAL &amp; AFTER-PARTY','Aboki Junction','#ffc21a']];
 // ======================
 const $=id=>document.getElementById(id),N=n=>'₦'+n.toLocaleString('en-NG');
 $('cards').innerHTML=Object.entries(COMP).map(([k,o])=>`<div class="card" style="--c:${o.c}"><div class="ico">${o.ico}</div><h3>${o.name}</h3><p>${o.desc}</p><div class="prize">🏆 <b>Win:</b> ${o.prize}</div><p>📍 ${o.venue} • 📅 ${o.when}</p><div class="spon">Sponsored by <b>${o.sp}</b></div><div class="fee">Registration: ${N(o.fee)}</div><button class="btn" onclick="openM('${k}')">Register Now</button></div>`).join('');
-$('tl').innerHTML=DAYS.map((d,i)=>`<div style="--c:${d[3]}" class="${i==6?'big':''}"><b>${d[0]}</b><span>${d[1]}</span><small>${d[2]}</small></div>`).join('');
+$('tl').innerHTML=DAYS.map((d,i)=>`<div style="--c:${d[3]}" class="${i==DAYS.length-1?'big':''}"><b>${d[0]}</b><span>${d[1]}</span><small>${d[2]}</small></div>`).join('');
 $('st').innerHTML=STREETS.map((s,i)=>`<span style="--c:${['#ffc21a','#ff2e7e','#18b7e6','#ff6a1a','#00a862','#ffc21a','#ff2e7e','#18b7e6'][i]}">${s}</span>`).join('');
 
 function tick(){let t=START-new Date();if(t<0){t=0;$('cdl').textContent='🎉 FIESTA WEEK IS LIVE! SEE YOU AT THE CARNIVAL SATURDAY';}

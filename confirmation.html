@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="hood-fiesta-icon.png">
 <title>Payment Status – Hood Fiesta</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;600;700&display=swap">
 <style>
@@ -10,13 +11,15 @@ h1{font-family:'Lilita One';font-weight:400;font-size:2.2rem;color:#ffc21a}
 p{color:#b9c9bf;margin:8px 0}
 .ref{background:rgba(255,194,26,.12);border:2px dashed #ffc21a;border-radius:14px;padding:14px;margin:18px 0}
 .ref small{display:block;color:#b9c9bf;letter-spacing:2px;font-size:.7rem}.ref b{font-family:'Lilita One';font-weight:400;font-size:1.9rem;letter-spacing:2px;color:#f7f3e8}
+.lg{width:170px;height:auto;display:block;margin:0 auto 12px}
 .btn{display:inline-block;margin-top:14px;padding:12px 26px;border-radius:40px;font-weight:700;text-decoration:none;color:#2a1c00;background:linear-gradient(135deg,#ffc21a,#ff6a1a)}
-</style></head><body><div class="c" id="c"><h1>Checking payment…</h1><p>Please wait a moment.</p></div>
+</style></head><body><div class="c" id="c"><img class="lg" src="hood-fiesta-logo.webp" alt="Hood Fiesta"><h1>Checking payment…</h1><p>Please wait a moment.</p></div>
 <script>
 const c=document.getElementById('c'),q=new URLSearchParams(location.search),ref=q.get('reference')||q.get('trxref');
 const home='<a class="btn" href="/">Back to Hood Fiesta</a>';
 const clean=t=>String(t==null?'':t).replace(/[<>&"']/g,'');
-function show(h){c.innerHTML=h+home}
+const logo='<img class="lg" src="hood-fiesta-logo.webp" alt="Hood Fiesta">';
+function show(h){c.innerHTML=logo+h+home}
 (async()=>{
  if(!ref)return show('<h1>No payment found</h1><p>We could not find a payment reference.</p>');
  try{const j=await (await fetch('/api/verify?reference='+encodeURIComponent(ref))).json();
