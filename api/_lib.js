@@ -7,7 +7,7 @@ const COMPETITIONS = {
   swimming: { name: 'Swimming Competition', code: 'SW', fee: 5000, venue: 'Bris Vile Swimming Pool', when: 'Wednesday' },
   snooker: { name: 'Snooker Competition', code: 'SN', fee: 5000, venue: 'First Class', when: 'Thursday' },
   tt: { name: 'Table Tennis Competition', code: 'TT', fee: 5000, venue: 'First Class', when: 'Thursday' },
-  boardgames: { name: 'Board Games Competition', code: 'BG', fee: 5000, venue: 'Zuvillah', when: 'To be announced' },
+  boardgames: { name: 'Board Games Competition', code: 'BG', fee: 5000, venue: 'Zuvillah', when: 'Friday' },
 };
 const BOARD_GAMES = ['Monopoly', 'Chess', 'Scrabble'];
 const STREETS = ['Camp David', 'Bris Vile', 'Maryland', 'Nellyview', 'House of Assembly', 'Cheko', 'Mofa', 'Pritazzo Extension'];
@@ -102,7 +102,7 @@ function table(rows) {
 
 function shell(inner) {
   return `<div style="background:#f3efe2;padding:20px;font-family:Arial,Helvetica,sans-serif"><div style="max-width:560px;margin:auto;background:#fff;border-radius:16px;overflow:hidden">
-  <div style="background:#008751;color:#fff;text-align:center;padding:26px 16px"><div style="font-size:30px;font-weight:bold;letter-spacing:1px;color:#ffc21a">HOOD FIESTA</div><div style="font-size:13px;letter-spacing:1px">One Neighbourhood. One Community. One Experience.</div></div>
+  <div style="background:#008751;color:#fff;text-align:center;padding:26px 16px"><div style="font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px">Vuzanchi House presents</div><div style="font-size:30px;font-weight:bold;letter-spacing:1px;color:#ffc21a">HOOD FIESTA</div><div style="font-size:13px;letter-spacing:1px">One Neighbourhood. One Community. One Experience.</div></div>
   <div style="height:8px;background:linear-gradient(90deg,#ffc21a,#ff6a1a,#ff2e7e,#18b7e6)"></div>${inner}
   <div style="background:#04321f;color:#b9c9bf;text-align:center;font-size:12px;padding:14px">Questions? WhatsApp 09020757238 · blakmixedentertainment@gmail.com</div></div></div>`;
 }
@@ -112,12 +112,12 @@ async function sendConfirmation({ reference, amount, reg, paidAt }) {
   const t = transport();
   const from = `"Hood Fiesta" <${process.env.GMAIL_USER}>`;
   const rows = [['Reference no.', reference], ['Competition', comp.name], ['Venue', comp.venue], ['When', comp.when], ['Amount paid', naira(amount)], ...detailRows(reg)];
-  const html = shell(`<div style="padding:24px"><h2 style="margin:0 0 8px;color:#008751">Registration confirmed ✅</h2>
+  const html = shell(`<div style="padding:24px"><h2 style="margin:0 0 8px;color:#008751">Registration confirmed</h2>
    <p style="line-height:1.5">Hi ${esc(registrantName(reg))}, your payment has been received and <b>${esc(reg.street)}</b> is officially registered for the <b>${esc(comp.name)}</b>.</p>
    <div style="background:#fff7dc;border:2px dashed #ffc21a;border-radius:12px;text-align:center;padding:14px;margin:16px 0"><div style="font-size:12px;color:#667">YOUR REFERENCE NUMBER</div><div style="font-size:26px;font-weight:bold;letter-spacing:2px">${esc(reference)}</div></div>
    <p style="line-height:1.5">Please <b>keep this reference number</b> and show it (screenshot or printout) at screening.</p>
    <table style="width:100%;border-collapse:collapse;background:#f7f7f4;border-radius:10px">${table(rows)}</table>
-   <p style="line-height:1.5;margin-top:16px">The final timetable depends on the number of registered contestants, so we will contact you on the phone number above with fixtures. See you at the Grand Carnival on Saturday! 🥁</p></div>`);
+   <p style="line-height:1.5;margin-top:16px">The final timetable depends on the number of registered contestants, so we will contact you on the phone number above with fixtures. See you at the Grand Carnival on Saturday.</p></div>`);
   await t.sendMail({ from, to: reg.email, subject: `Hood Fiesta – Registration confirmed (${reference})`, html });
 
   const admin = process.env.ADMIN_EMAIL || process.env.GMAIL_USER;
