@@ -3,11 +3,13 @@ const nodemailer = require('nodemailer');
 
 // ---- Competitions & fees (server is the source of truth for amounts) ----
 const COMPETITIONS = {
-  football: { name: 'Football Street Competition', code: 'FB', fee: 20000, venue: 'Zuvillah', when: 'Monday – Tuesday (semi-finals & final on Friday)' },
+  football: { name: 'Football Street Competition', code: 'FB', fee: 20000, venue: 'Rival Zone', when: 'Monday – Tuesday (semi-finals & final on Friday)' },
   swimming: { name: 'Swimming Competition', code: 'SW', fee: 5000, venue: 'Bris Vile Swimming Pool', when: 'Wednesday' },
   snooker: { name: 'Snooker Competition', code: 'SN', fee: 5000, venue: 'First Class', when: 'Thursday' },
   tt: { name: 'Table Tennis Competition', code: 'TT', fee: 5000, venue: 'First Class', when: 'Thursday' },
+  boardgames: { name: 'Board Games Competition', code: 'BG', fee: 5000, venue: 'Zuvillah', when: 'To be announced' },
 };
+const BOARD_GAMES = ['Monopoly', 'Chess', 'Scrabble'];
 const STREETS = ['Camp David', 'Bris Vile', 'Maryland', 'Nellyview', 'House of Assembly', 'Cheko', 'Mofa', 'Pritazzo Extension'];
 
 const str = (v, max = 120) => String(v == null ? '' : v).trim().slice(0, max);
@@ -31,6 +33,12 @@ function cleanRegistration(b) {
     r.name = str(b.name);
     if (!r.name) throw new Error('Please enter your full name');
     if (b.competition === 'swimming') r.age = str(b.age, 3);
+    if (b.competition === 'boardgames') {
+      r.game = str(b.game, 20);
+      if (!BOARD_GAMES.includes(r.game)) throw new Error('Please choose which game you want to play (Monopoly, Chess or Scrabble)');
+      r.gender = str(b.gender, 10);
+      if (!['Male', 'Female'].includes(r.gender)) throw new Error('Please select Male or Female');
+    }
     if (b.competition === 'tt') {
       r.category = b.category === 'Doubles' ? 'Doubles' : 'Singles';
       if (r.category === 'Doubles') {
@@ -48,6 +56,8 @@ function detailRows(r) {
   const rows = [['Street', r.street]];
   if (r.team) rows.push(['Team name', r.team]);
   if (r.name) rows.push(['Name', r.name]);
+  if (r.game) rows.push(['Game', r.game]);
+  if (r.gender) rows.push(['Gender', r.gender]);
   if (r.contact) rows.push(['Contact person', r.contact]);
   if (r.age) rows.push(['Age', r.age]);
   if (r.category) rows.push(['Category', r.category]);

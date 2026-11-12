@@ -43,6 +43,8 @@ module.exports = async (req, res) => {
           email: reg.email || (t.customer && t.customer.email) || '',
           amount: t.amount / 100,
           age: reg.age || '',
+          game: reg.game || '',
+          gender: reg.gender || '',
           category: reg.category || '',
           partner: reg.partner || '',
           coach: reg.coach || '',
