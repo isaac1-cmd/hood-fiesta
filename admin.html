@@ -68,7 +68,7 @@ a{color:var(--gold)}
 const $=id=>document.getElementById(id);
 const N=n=>'₦'+Number(n).toLocaleString('en-NG');
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const COLORS={football:'#00a862',swimming:'#18b7e6',snooker:'#ff2e7e',tt:'#ff6a1a'};
+const COLORS={football:'#00a862',swimming:'#18b7e6',snooker:'#ff2e7e',tt:'#ff6a1a',boardgames:'#a06bff'};
 let all=[],open=new Set();
 
 const who=r=>r.name||r.team||r.contact||'';
@@ -97,7 +97,7 @@ function draw(){
   const list=filtered();
   const rev=list.reduce((a,r)=>a+r.amount,0);
   const by={};list.forEach(r=>by[r.code]=(by[r.code]||0)+1);
-  const names={football:'Football',swimming:'Swimming',snooker:'Snooker',tt:'Table Tennis'};
+  const names={football:'Football',swimming:'Swimming',snooker:'Snooker',tt:'Table Tennis',boardgames:'Board Games'};
   const fbStreets=new Set(list.filter(r=>r.code==='football').map(r=>r.street)).size;
   $('stats').innerHTML=
     `<div class="stat"><span>Registrations</span><b>${list.length}</b></div><div class="stat"><span>Revenue</span><b>${N(rev)}</b></div>`+
@@ -111,7 +111,7 @@ function draw(){
     const dup=r.code==='football'&&fbCount[r.street]>1?'<span class="dup">2+ teams</span>':'';
     const main=`<tr class="row" data-ref="${esc(r.reference)}"><td>${new Date(r.date).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'})}</td><td class="ref">${esc(r.reference)}</td><td><span class="tag" style="--c:${COLORS[r.code]}">${esc(r.competition.replace(' Competition','').replace(' Street',''))}</span></td><td>${esc(r.street)}${dup}</td><td><b>${esc(who(r))}</b></td><td><a href="${wa(r.phone)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(r.phone)}</a></td><td>${esc(r.email)}</td><td>${N(r.amount)}</td></tr>`;
     if(!isOpen)return main;
-    const rows=[['Competition',r.competition],['Street',r.street],r.team&&['Team name',r.team],r.name&&['Name',r.name],r.contact&&['Contact person',r.contact],r.age&&['Age',r.age],r.category&&['Category',r.category],r.partner&&['Doubles partner',r.partner],r.players.length&&['Players',r.players.map((p,i)=>`${i+1}. ${p}`).join('\n')],r.coach&&['Coach',r.coach],['Phone',r.phone],['Email',r.email],['Amount paid',N(r.amount)],['Reference',r.reference]].filter(Boolean);
+    const rows=[['Competition',r.competition],['Street',r.street],r.team&&['Team name',r.team],r.name&&['Name',r.name],r.contact&&['Contact person',r.contact],r.game&&['Game',r.game],r.gender&&['Gender',r.gender],r.age&&['Age',r.age],r.category&&['Category',r.category],r.partner&&['Doubles partner',r.partner],r.players.length&&['Players',r.players.map((p,i)=>`${i+1}. ${p}`).join('\n')],r.coach&&['Coach',r.coach],['Phone',r.phone],['Email',r.email],['Amount paid',N(r.amount)],['Reference',r.reference]].filter(Boolean);
     return main+`<tr class="det"><td colspan="8"><dl>${rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl></td></tr>`;
   }).join('');
   $('dmsg').textContent=list.length?'':'No registrations found.';
@@ -132,8 +132,8 @@ $('lf').addEventListener('submit',async e=>{
 
 $('csv').addEventListener('click',()=>{
   const cell=v=>`"${String(v==null?'':v).replace(/"/g,'""')}"`;
-  const head=['Paid','Reference','Competition','Street','Name','Team','Contact person','Phone','Email','Amount','Age','Category','Doubles partner','Coach','Players'];
-  const lines=[head.map(cell).join(',')].concat(filtered().map(r=>[r.date,r.reference,r.competition,r.street,r.name,r.team,r.contact,r.phone,r.email,r.amount,r.age,r.category,r.partner,r.coach,r.players.join('; ')].map(cell).join(',')));
+  const head=['Paid','Reference','Competition','Street','Name','Team','Contact person','Phone','Email','Amount','Age','Game','Gender','Category','Doubles partner','Coach','Players'];
+  const lines=[head.map(cell).join(',')].concat(filtered().map(r=>[r.date,r.reference,r.competition,r.street,r.name,r.team,r.contact,r.phone,r.email,r.amount,r.age,r.game,r.gender,r.category,r.partner,r.coach,r.players.join('; ')].map(cell).join(',')));
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob(['\uFEFF'+lines.join('\n')],{type:'text/csv;charset=utf-8'}));
   a.download='hood-fiesta-registrations.csv';a.click();

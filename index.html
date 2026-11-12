@@ -89,6 +89,7 @@ input:focus,select:focus{outline:0;border-color:var(--g)}
 @media(max-width:600px){.tl div{grid-template-columns:1fr}.two{grid-template-columns:1fr}.btn.alt{margin:12px 0 0}}
 
 /* ---- logos & partners ---- */
+.pl img.onwhite{box-sizing:border-box;background:#fff;border-radius:18px;padding:10px 18px}
 .navlogo{display:block;line-height:0}.navlogo img{height:46px;width:auto;display:block}
 .hero h1.logo{font-size:0;background:none;margin:18px auto 6px;filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
 .hero h1.logo img{width:clamp(250px,46vw,480px);height:auto;display:block;margin:auto}
@@ -98,8 +99,21 @@ input:focus,select:focus{outline:0;border-color:var(--g)}
 .partners .pname{display:grid;place-items:center;min-height:104px;min-width:170px;padding:0 22px;border:2px dashed rgba(255,255,255,.55);border-radius:18px;font-family:'Lilita One';font-size:1.25rem;letter-spacing:1px;color:#fff;background:rgba(255,255,255,.08)}
 footer .packaged{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:16px}
 footer .packaged span{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--mu)}
-footer .packaged img{width:170px;height:auto;border-radius:14px;border:1px solid rgba(255,194,26,.45);display:block}
+footer .packaged img{width:120px;height:auto;display:block;opacity:.95}
 @media(max-width:600px){.navlogo img{height:40px}.pl,.pl img{height:84px}.partners .pname{min-height:84px;min-width:130px;font-size:1.05rem}}
+
+/* ---- board games picker ---- */
+.gamepick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}
+.gamepick label{margin:0;font-weight:600;cursor:pointer}
+.gamepick input{position:absolute;opacity:0;width:0;height:0;padding:0;border:0}
+.gamepick span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 6px;border:2px solid #d5ddd8;border-radius:12px;background:#fff;color:#1b1b1b;font-size:1.5rem;line-height:1.1;text-align:center;transition:.15s}
+.gamepick span b{font-size:.8rem}
+.gamepick input:checked+span{border-color:#a06bff;background:#f1eaff;box-shadow:0 0 0 3px rgba(160,107,255,.25)}
+.gamepick input:focus-visible+span{outline:2px solid #1b1b1b}
+
+/* centre the last row of competition cards */
+#cards.grid{display:flex;flex-wrap:wrap;justify-content:center}
+#cards.grid .card{flex:1 1 280px;max-width:360px}
 </style>
 </head>
 <body id="top">
@@ -112,29 +126,29 @@ footer .packaged img{width:170px;height:auto;border-radius:14px;border:1px solid
   <p class="sub">The Street Carnival • Sports • Music • Business Expo</p>
   <p class="slogan">One Neighbourhood. One Community. One Experience.</p>
   <p class="meta">A week of street-vs-street rivalry, then the Grand Carnival &amp; After-Party on Saturday • Aboki Junction</p>
-  <a class="btn" href="#compete">Register to Win Big Prizes </a><a class="btn alt" href="#grand">See the Carnival</a>
+  <a class="btn" href="#compete">Register to Win Big Prizes 🏆</a><a class="btn alt" href="#grand">See the Carnival</a>
   <div class="cd" id="cd"><div><b id="d">00</b><span>Days</span></div><div><b id="h">00</b><span>Hours</span></div><div><b id="m">00</b><span>Mins</span></div><div><b id="s">00</b><span>Secs</span></div></div>
-  <p class="cdl" id="cdl">COUNTDOWN TO FIESTA WEEK • MONDAY 07 DECEMBER 2026</p>
+  <p class="cdl" id="cdl">COUNTDOWN TO FIESTA WEEK • MONDAY 7 DECEMBER 2026</p>
 </header>
 <div class="bunting"></div>
 
-<div class="partners"><p>Brought to you by</p><div class="plogos"><figure class="pl"><img src="zuvillah.PNG" alt="Zuvillah" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure><figure class="pl"><img src="partner-bris-vile.png" alt="Bris Vile Hotel &amp; Resort" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure><figure class="pl"><img src="partner-first-class.png" alt="First Class" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure></div></div>
+<div class="partners"><p>Brought to you by</p><div class="plogos"><figure class="pl"><img src="partner-rival-zone.png" alt="Rival Zone" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure><figure class="pl"><img src="partner-first-class.png" alt="First Class" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure><figure class="pl"><img src="partner-bris-vile.png" alt="Bris Vile Hotel &amp; Resort" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure><figure class="pl"><img class="onwhite" src="partner-zuvillah.png" alt="Zuvillah Spot" onerror="var s=document.createElement('span');s.className='pname';s.textContent=this.alt;this.replaceWith(s)"></figure></div></div>
 
 <section id="about">
   <h2>What Hood Fiesta Is All About</h2>
   <p class="lead">A week-long street festival where eight neighbourhoods compete, connect and celebrate, ending with a massive Saturday carnival.</p>
   <div class="card" style="--c:var(--gold);text-align:center;margin-bottom:18px"><h3>Our Vision</h3><p style="font-size:1.05rem;max-width:760px;margin:8px auto 0">To make Hood Fiesta an annual neighbourhood celebration that promotes <b style="color:var(--tx)">unity</b>, <b style="color:var(--tx)">healthy competition</b>, <b style="color:var(--tx)">youth talent</b>, <b style="color:var(--tx)">local business growth</b> and plenty of <b style="color:var(--tx)">fun</b>, so every resident looks forward to it each year.</p></div>
   <div class="grid">
-    <div class="card" style="--c:var(--g)"><div class="ico"></div><h3>The Rivalry</h3><p>Streets go head to head in football, swimming, snooker and table tennis, playing for prizes, trophies and bragging rights.</p></div>
-    <div class="card" style="--c:var(--bl)"><div class="ico"></div><h3>The Community</h3><p>Residents, families, businesses and neighbours meet, cheer together and build stronger bonds across every street.</p></div>
-    <div class="card" style="--c:var(--pk)"><div class="ico"></div><h3>The Celebration</h3><p>The Saturday carnival brings the parade, live DJs, dance, vendors, awards and an after-party that runs till dawn.</p></div>
-    <div class="card" style="--c:var(--or)"><div class="ico"></div><h3>Business Boost</h3><p>Local vendors and brands get a big crowd to sell to, showcase their products and meet new customers.</p></div>
+    <div class="card" style="--c:var(--g)"><div class="ico">🔥</div><h3>The Rivalry</h3><p>Streets go head to head in football, swimming, snooker, table tennis and board games, playing for prizes, trophies and bragging rights.</p></div>
+    <div class="card" style="--c:var(--bl)"><div class="ico">🤝</div><h3>The Community</h3><p>Residents, families, businesses and neighbours meet, cheer together and build stronger bonds across every street.</p></div>
+    <div class="card" style="--c:var(--pk)"><div class="ico">🎉</div><h3>The Celebration</h3><p>The Saturday carnival brings the parade, live DJs, dance, vendors, awards and an after-party that runs till dawn.</p></div>
+    <div class="card" style="--c:var(--or)"><div class="ico">🛍️</div><h3>Business Boost</h3><p>Local vendors and brands get a big crowd to sell to, showcase their products and meet new customers.</p></div>
   </div>
 </section>
 
 <section id="compete">
   <h2>Competition Registration</h2>
-  <p class="lead">Four competitions. Eight streets. Pick your game, register your street and play for glory and cash prizes.</p>
+  <p class="lead">Five competitions. Eight streets. Pick your game, register your street and play for glory and cash prizes.</p>
   <div class="grid" id="cards"></div>
 </section>
 
@@ -153,13 +167,13 @@ footer .packaged img{width:170px;height:auto;border-radius:14px;border:1px solid
 
 <section id="grand">
   <h2>Grand Carnival – Saturday</h2>
-  <p class="lead">The Entire Hood Comes Together • Venue: Zuvillah-Aboki Junction</p>
+  <p class="lead">The Entire Hood Comes Together • Venue: Aboki Junction</p>
   <div class="final">
     <div><h3>Programme</h3><ul style="padding:0">
       <li><b>12:00 PM</b> Grounds open &amp; guest arrival</li><li><b>1:00 PM</b> Official opening &amp; welcome</li><li><b>2:00 PM</b> Street parade &amp; carnival</li><li><b>3:00 PM</b> Community games</li><li><b>4:00 PM</b> Business exhibition &amp; vendors</li><li><b>5:00 PM</b> Awards &amp; trophies</li><li><b>6:00 PM</b> Live DJs &amp; entertainment</li><li><b>8:00 PM</b> Special guest performances</li><li><b>1:00 AM</b> Official After-Party at BOOMBOX Club</li>
     </ul></div>
     <div><h3>Highlights</h3><ul style="padding:0">
-      <li> Street parade &amp; community celebration</li><li> Trophy &amp; cash prize presentations</li><li>🛍️ Business &amp; vendor exhibition</li><li>🎧 Live DJs, hype hosts &amp; dance</li><li>🎁 Games &amp; giveaways</li><li>🌙 After-party till dawn</li></ul>
+      <li>🥁 Street parade &amp; community celebration</li><li>🏆 Trophy &amp; cash prize presentations</li><li>🛍️ Business &amp; vendor exhibition</li><li>🎧 Live DJs, hype hosts &amp; dance</li><li>🎁 Games &amp; giveaways</li><li>🌙 After-party till dawn</li></ul>
       <p style="color:var(--mu);font-size:.85rem;margin-top:14px">Want a stall? Food, fashion, beauty, games and local brands are welcome — contact us below.</p></div>
   </div>
 </section>
@@ -172,29 +186,30 @@ footer .packaged img{width:170px;height:auto;border-radius:14px;border:1px solid
   <a class="btn alt" href="mailto:blakmixedentertainment@gmail.com">✉️ blakmixedentertainment@gmail.com</a>
 </section>
 <div class="bunting"></div>
-<footer><div class="packaged"><span>Packaged &amp; presented by</span><img src="blakmixed-logo.webp" alt="Blak Mixed Entertainment"></div><p>© 2026 Hood Fiesta • Organised by Blak Mixed Entertainment</p></footer>
+<footer><div class="packaged"><span>Packaged &amp; presented by</span><img src="blakmixed-logo.png" alt="Blak Mixed Entertainment"></div><p>© 2026 Hood Fiesta • Organised by Blak Mixed Entertainment</p></footer>
 
 <div class="modal" id="modal"><div class="box"><div class="bh" id="bh"><h3 id="bt"></h3><button class="x" onclick="closeM()" aria-label="Close">×</button></div><div id="bd"></div></div></div>
 
 <script>
 // ===== EDIT HERE =====
 const PHONE='2349020757238', EMAIL='blakmixedentertainment@gmail.com';
-const START=new Date('2026-12-07T00:00:00+01:00'); // Monday, 1st Monday of December
+const START=new Date('2026-12-07T00:00:00+01:00'); // Monday 7 December 2026
 const COMP={
- football:{name:'Football Street Competition',ico:'⚽',c:'#00a862',fee:20000,sp:'Zuvillah',venue:'Zuvillah',when:'Mon &amp; Tue • Semi-finals &amp; final Fri',prize:'1st ₦100,000 • 2nd ₦50,000',desc:'8 streets. 1 trophy. Register your street team of 10 players.',type:'team'},
+ football:{name:'Football Street Competition',ico:'⚽',c:'#00a862',fee:20000,sp:'Rival Zone',venue:'Rival Zone',when:'Mon &amp; Tue • Semi-finals &amp; final Fri',prize:'1st ₦200,000 • 2nd ₦100,000',desc:'8 streets. 1 trophy. Register your street team of 10 players.',type:'team'},
  swimming:{name:'Swimming Competition',ico:'🏊',c:'#18b7e6',fee:5000,sp:'Bris Vile',venue:'Bris Vile Swimming Pool',when:'Wednesday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'Making waves. Race for your street in individual finals.',type:'solo'},
  snooker:{name:'Snooker Competition',ico:'🎱',c:'#ff2e7e',fee:5000,sp:'First Class',venue:'First Class',when:'Thursday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'The hood\'s cue masters. Knockout to the final.',type:'solo'},
- tt:{name:'Table Tennis Competition',ico:'🏓',c:'#ff6a1a',fee:5000,sp:'First Class',venue:'First Class',when:'Thursday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'Fast hands, big energy. Singles and doubles.',type:'tt'}
+ tt:{name:'Table Tennis Competition',ico:'🏓',c:'#ff6a1a',fee:5000,sp:'First Class',venue:'First Class',when:'Thursday',prize:'1st ₦30,000 • 2nd ₦20,000',desc:'Fast hands, big energy. Singles and doubles.',type:'tt'},
+ boardgames:{name:'Board Games Competition',ico:'♟️',c:'#a06bff',fee:5000,sp:'Zuvillah',venue:'Zuvillah',when:'Day to be announced',prize:'Prizes to be announced',desc:'Monopoly, Chess or Scrabble. Choose your game and play for your street.',type:'board'}
 };
 const STREETS=['Camp David','Bris Vile','Maryland','Nellyview','House of Assembly','Cheko','Mofa','Pritazzo Extension'];
-const DAYS=[['Monday','Football Kick-Off','Zuvillah','#00a862'],['Tuesday','Football Competition Continues','Zuvillah','#00a862'],['Wednesday','Swimming Competition','Bris Vile Pool','#18b7e6'],['Thursday','Snooker &amp; Table Tennis','First Class','#ff2e7e'],['Friday','Football Semi-Finals &amp; Final','Zuvillah','#00a862'],['Saturday','🎉 GRAND CARNIVAL &amp; AFTER-PARTY','Aboki Junction','#ffc21a']];
+const DAYS=[['Monday','Football Kick-Off','Rival Zone','#00a862'],['Tuesday','Football Competition Continues','Rival Zone','#00a862'],['Wednesday','Swimming Competition','Bris Vile Pool','#18b7e6'],['Thursday','Snooker &amp; Table Tennis','First Class','#ff2e7e'],['Friday','Football Semi-Finals &amp; Final','Rival Zone','#00a862'],['Saturday','🎉 GRAND CARNIVAL &amp; AFTER-PARTY','Aboki Junction','#ffc21a']];
 // ======================
 const $=id=>document.getElementById(id),N=n=>'₦'+n.toLocaleString('en-NG');
 $('cards').innerHTML=Object.entries(COMP).map(([k,o])=>`<div class="card" style="--c:${o.c}"><div class="ico">${o.ico}</div><h3>${o.name}</h3><p>${o.desc}</p><div class="prize">🏆 <b>Win:</b> ${o.prize}</div><p>📍 ${o.venue} • 📅 ${o.when}</p><div class="spon">Sponsored by <b>${o.sp}</b></div><div class="fee">Registration: ${N(o.fee)}</div><button class="btn" onclick="openM('${k}')">Register Now</button></div>`).join('');
 $('tl').innerHTML=DAYS.map((d,i)=>`<div style="--c:${d[3]}" class="${i==DAYS.length-1?'big':''}"><b>${d[0]}</b><span>${d[1]}</span><small>${d[2]}</small></div>`).join('');
 $('st').innerHTML=STREETS.map((s,i)=>`<span style="--c:${['#ffc21a','#ff2e7e','#18b7e6','#ff6a1a','#00a862','#ffc21a','#ff2e7e','#18b7e6'][i]}">${s}</span>`).join('');
 
-function tick(){let t=START-new Date();if(t<0){t=0;$('cdl').textContent=' FIESTA WEEK IS LIVE! SEE YOU AT THE CARNIVAL SATURDAY';}
+function tick(){let t=START-new Date();if(t<0){t=0;$('cdl').textContent='🎉 FIESTA WEEK IS LIVE! SEE YOU AT THE CARNIVAL SATURDAY';}
  const f=(x)=>String(Math.floor(x)).padStart(2,'0');$('d').textContent=f(t/864e5);$('h').textContent=f(t/36e5%24);$('m').textContent=f(t/6e4%60);$('s').textContent=f(t/1e3%60)}
 tick();setInterval(tick,1000);
 
@@ -204,6 +219,7 @@ let cur;
 function openM(k){cur=k;const o=COMP[k];$('bh').style.setProperty('--c',o.c);$('bt').textContent=o.ico+' '+o.name;let f='';
  if(o.type=='team'){f=`<label>Street Name</label><select id="street" required>${opts()}</select>`+inp('team','Team Name (optional)','text',false)+'<div class="sec">The 10 Players</div>'+Array.from({length:10},(_,i)=>inp('p'+i,'Player '+(i+1)+' – full name')).join('')+'<div class="sec">Coach</div>'+inp('coach','Coach name (if you have one)','text',false)+'<div class="sec">Team Contact</div>'+inp('cname','Contact person name')+inp('cphone','Phone / WhatsApp number','tel')+inp('email','Email address (your confirmation is sent here)','email');}
  else{f=`<label>Which street are you representing?</label><select id="street" required>${opts()}</select>`+inp('fname','Full name')+inp('cphone','Phone / WhatsApp number','tel')+inp('email','Email address (your confirmation is sent here)','email');
+  if(o.type=='board')f+=`<label>Which game do you want to play?</label><div class="gamepick">${['Monopoly','Chess','Scrabble'].map(g=>`<label><input type="radio" name="game" value="${g}" required><span>${({Monopoly:'🎩',Chess:'♟️',Scrabble:'🔤'})[g]}<b>${g}</b></span></label>`).join('')}</div><label>Gender</label><select id="gender" required><option value="">Select…</option><option>Male</option><option>Female</option></select>`;
   if(o.type=='tt')f+=`<label>Category</label><select id="cat" onchange="$('pw').style.display=this.value=='Doubles'?'block':'none'"><option>Singles</option><option>Doubles</option></select><div id="pw" style="display:none">${inp('partner','Doubles partner full name','text',false)}</div>`;
   if(k=='swimming')f+=inp('age','Age','number');}
  $('bd').innerHTML=`<form onsubmit="return sub(event)">${f}<div class="pay"><span>Registration fee</span><span>${N(o.fee)}</span></div><p class="note">You will be taken to Paystack to pay securely. Once payment is confirmed, a confirmation email with your reference number is sent to you.</p><div class="err" id="err"></div><button class="btn g" type="submit">Continue to Payment →</button></form>`;
@@ -212,7 +228,7 @@ function closeM(){$('modal').classList.remove('on')}
 async function sub(e){e.preventDefault();const o=COMP[cur],v=id=>($(id)?$(id).value.trim():''),b=e.target.querySelector('button[type=submit]'),er=$('err');er.textContent='';
  const d={competition:cur,street:v('street'),email:v('email'),phone:v('cphone')};
  if(o.type=='team'){d.team=v('team');d.players=Array.from({length:10},(_,i)=>v('p'+i));d.coach=v('coach');d.contact=v('cname');}
- else{d.name=v('fname');d.age=v('age');if(cur=='tt'){d.category=v('cat');d.partner=v('partner');}}
+ else{d.name=v('fname');d.age=v('age');if(cur=='boardgames'){const g=document.querySelector('input[name=game]:checked');d.game=g?g.value:'';d.gender=v('gender');}if(cur=='tt'){d.category=v('cat');d.partner=v('partner');}}
  b.disabled=true;b.textContent='Please wait…';
  try{const r=await fetch('/api/initialize',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});const j=await r.json();if(!r.ok||!j.url)throw new Error(j.error||'Could not start payment');location.href=j.url}
  catch(x){er.textContent=x.message;b.disabled=false;b.textContent='Continue to Payment →'}return false}
